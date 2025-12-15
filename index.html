@@ -97,6 +97,49 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--apple-light-blue);
         }
+        
+        /* Language switcher styles */
+        .language-switcher {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 8px 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 113, 227, 0.2);
+        }
+        
+        .language-switcher select {
+            background: transparent;
+            color: var(--apple-dark-gray);
+            border: 1px solid #ddd;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        .language-switcher select:hover {
+            border-color: var(--apple-blue);
+        }
+        
+        .language-switcher select:focus {
+            border-color: var(--apple-blue);
+            box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+        }
+        
+        @media (max-width: 640px) {
+            .language-switcher {
+                top: 15px;
+                right: 15px;
+                padding: 6px 10px;
+            }
+        }
     </style>
     <!-- Structured data for SEO -->
     <script type="application/ld+json">
@@ -131,16 +174,25 @@
     
 </head>
 <body class="bg-apple-gray text-apple-dark font-sans leading-relaxed">
+    <!-- 语言切换器 -->
+    <div class="language-switcher">
+        <select id="languageSelect">
+            <option value="en">English</option>
+            <option value="zh-CN">中文</option>
+            <option value="ja">日本語</option>
+        </select>
+    </div>
+
     <header class="bg-white apple-shadow">
         <div class="container mx-auto px-4 py-6">
             <div class="flex justify-between items-center">
-                <a href="https://yuteng.online" class="text-2xl font-bold apple-blue">Yuteng</a>
+                <a href="https://yuteng.online" class="text-2xl font-bold apple-blue" data-i18n="siteTitle">Yuteng</a>
                 <nav class="hidden md:block">
                     <ul class="flex space-x-6">
-                        <li><a href="#game" class="hover:apple-blue transition duration-300">Play Now</a></li>
-                        <li><a href="#about" class="hover:apple-blue transition duration-300">About</a></li>
-                        <li><a href="#features" class="hover:apple-blue transition duration-300">Features</a></li>
-                        <li><a href="#how-to-play" class="hover:apple-blue transition duration-300">How to Play</a></li>
+                        <li><a href="#game" class="hover:apple-blue transition duration-300" data-i18n="navPlay">Play Now</a></li>
+                        <li><a href="#about" class="hover:apple-blue transition duration-300" data-i18n="navAbout">About</a></li>
+                        <li><a href="#features" class="hover:apple-blue transition duration-300" data-i18n="navFeatures">Features</a></li>
+                        <li><a href="#how-to-play" class="hover:apple-blue transition duration-300" data-i18n="navHowToPlay">How to Play</a></li>
                     </ul>
                 </nav>
                 <button class="md:hidden focus:outline-none">
@@ -154,8 +206,8 @@
 
     <main class="container mx-auto px-4 py-8">
         <section class="text-center mb-12 fade-in">
-            <h1 class="text-4xl md:text-5xl font-bold mb-4">Yuteng Monster Survivors</h1>
-            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto">Survive endless waves of monsters in this thrilling action-packed adventure</p>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4" data-i18n="mainTitle">Yuteng Monster Survivors</h1>
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto" data-i18n="mainTagline">Survive endless waves of monsters in this thrilling action-packed adventure</p>
         </section>
 
         <section id="game" class="mb-16 fade-in">
@@ -168,42 +220,42 @@
 
         <section id="about" class="mb-16 fade-in">
             <div class="bg-white rounded-xl apple-shadow p-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue">About Yuteng Monster Survivors</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue" data-i18n="aboutTitle">About Yuteng Monster Survivors</h2>
                 <div class="space-y-4">
-                    <p>Yuteng Monster Survivors is an immersive online gaming experience that puts your survival skills to the test. In this action-packed adventure, you'll face endless waves of monsters in a constantly evolving world. With each wave becoming progressively challenging, you'll need to collect power-ups, upgrade your character, and employ strategic gameplay to survive as long as possible.</p>
+                    <p data-i18n="aboutText1">Yuteng Monster Survivors is an immersive online gaming experience that puts your survival skills to the test. In this action-packed adventure, you'll face endless waves of monsters in a constantly evolving world. With each wave becoming progressively challenging, you'll need to collect power-ups, upgrade your character, and employ strategic gameplay to survive as long as possible.</p>
                     
-                    <p>Developed using cutting-edge Unity technology, Yuteng Monster Survivors offers smooth gameplay, stunning visuals, and an engaging progression system that will keep you coming back for more. The game features a variety of unique characters, each with special abilities and playstyles to master.</p>
+                    <p data-i18n="aboutText2">Developed using cutting-edge Unity technology, Yuteng Monster Survivors offers smooth gameplay, stunning visuals, and an engaging progression system that will keep you coming back for more. The game features a variety of unique characters, each with special abilities and playstyles to master.</p>
                 </div>
             </div>
         </section>
 
         <section id="features" class="mb-16 fade-in">
             <div class="bg-white rounded-xl apple-shadow p-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue">Game Features</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue" data-i18n="featuresTitle">Game Features</h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Endless Gameplay</h3>
-                        <p>Face increasingly difficult waves of monsters with no end in sight. How long can you survive?</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature1Title">Endless Gameplay</h3>
+                        <p data-i18n="feature1Desc">Face increasingly difficult waves of monsters with no end in sight. How long can you survive?</p>
                     </div>
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Character Progression</h3>
-                        <p>Level up your character, unlock new abilities, and upgrade your stats as you play.</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature2Title">Character Progression</h3>
+                        <p data-i18n="feature2Desc">Level up your character, unlock new abilities, and upgrade your stats as you play.</p>
                     </div>
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Dynamic Power-ups</h3>
-                        <p>Collect various power-ups that dramatically change your gameplay strategy and abilities.</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature3Title">Dynamic Power-ups</h3>
+                        <p data-i18n="feature3Desc">Collect various power-ups that dramatically change your gameplay strategy and abilities.</p>
                     </div>
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Unique Enemies</h3>
-                        <p>Battle dozens of different monster types, each with unique behaviors and attack patterns.</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature4Title">Unique Enemies</h3>
+                        <p data-i18n="feature4Desc">Battle dozens of different monster types, each with unique behaviors and attack patterns.</p>
                     </div>
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Stunning Visuals</h3>
-                        <p>Enjoy beautifully designed environments and character models with smooth animations.</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature5Title">Stunning Visuals</h3>
+                        <p data-i18n="feature5Desc">Enjoy beautifully designed environments and character models with smooth animations.</p>
                     </div>
                     <div class="p-4 rounded-lg bg-apple-gray">
-                        <h3 class="text-xl font-semibold mb-2 apple-blue">Cross-platform</h3>
-                        <p>Play seamlessly across desktop and mobile devices with optimized controls for each platform.</p>
+                        <h3 class="text-xl font-semibold mb-2 apple-blue" data-i18n="feature6Title">Cross-platform</h3>
+                        <p data-i18n="feature6Desc">Play seamlessly across desktop and mobile devices with optimized controls for each platform.</p>
                     </div>
                 </div>
             </div>
@@ -211,30 +263,30 @@
 
         <section id="how-to-play" class="mb-16 fade-in">
             <div class="bg-white rounded-xl apple-shadow p-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue">How to Play</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue" data-i18n="howToPlayTitle">How to Play</h2>
                 <div class="space-y-4">
-                    <p>Getting started with Yuteng Monster Survivors is simple:</p>
+                    <p data-i18n="howToPlayIntro">Getting started with Yuteng Monster Survivors is simple:</p>
                     
                     <div class="pl-5 space-y-3">
                         <div class="flex items-start">
                             <span class="text-apple-blue font-bold mr-2">1.</span>
-                            <p><span class="font-semibold">Controls:</span> Use WASD or arrow keys to move your character (on desktop). On mobile, use the virtual joystick that appears on the screen.</p>
+                            <p><span class="font-semibold" data-i18n="controlsTitle">Controls:</span> <span data-i18n="controlsDesc">Use WASD or arrow keys to move your character (on desktop). On mobile, use the virtual joystick that appears on the screen.</span></p>
                         </div>
                         <div class="flex items-start">
                             <span class="text-apple-blue font-bold mr-2">2.</span>
-                            <p><span class="font-semibold">Combat:</span> Your character attacks automatically. Position yourself strategically to maximize damage while avoiding enemy attacks.</p>
+                            <p><span class="font-semibold" data-i18n="combatTitle">Combat:</span> <span data-i18n="combatDesc">Your character attacks automatically. Position yourself strategically to maximize damage while avoiding enemy attacks.</span></p>
                         </div>
                         <div class="flex items-start">
                             <span class="text-apple-blue font-bold mr-2">3.</span>
-                            <p><span class="font-semibold">Level Up:</span> Collect experience gems dropped by defeated enemies to level up. Each level, you'll get to choose between three random upgrades.</p>
+                            <p><span class="font-semibold" data-i18n="levelUpTitle">Level Up:</span> <span data-i18n="levelUpDesc">Collect experience gems dropped by defeated enemies to level up. Each level, you'll get to choose between three random upgrades.</span></p>
                         </div>
                         <div class="flex items-start">
                             <span class="text-apple-blue font-bold mr-2">4.</span>
-                            <p><span class="font-semibold">Power-ups:</span> Special items occasionally appear on the battlefield. Collect them for temporary or permanent boosts.</p>
+                            <p><span class="font-semibold" data-i18n="powerupsTitle">Power-ups:</span> <span data-i18n="powerupsDesc">Special items occasionally appear on the battlefield. Collect them for temporary or permanent boosts.</span></p>
                         </div>
                         <div class="flex items-start">
                             <span class="text-apple-blue font-bold mr-2">5.</span>
-                            <p><span class="font-semibold">Survive:</span> The goal is to survive as long as possible while defeating as many monsters as you can. Your score increases with each enemy defeated.</p>
+                            <p><span class="font-semibold" data-i18n="surviveTitle">Survive:</span> <span data-i18n="surviveDesc">The goal is to survive as long as possible while defeating as many monsters as you can. Your score increases with each enemy defeated.</span></p>
                         </div>
                     </div>
                 </div>
@@ -243,24 +295,24 @@
 
         <section class="mb-16 fade-in">
             <div class="bg-white rounded-xl apple-shadow p-8">
-                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue">System Requirements</h2>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 pb-2 border-b-2 border-apple-blue" data-i18n="systemReqTitle">System Requirements</h2>
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="text-xl font-semibold mb-2">Minimum Requirements</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="minReqTitle">Minimum Requirements</h3>
                         <ul class="space-y-2 pl-5 list-disc">
-                            <li>Any modern web browser (Chrome, Firefox, Safari, Edge)</li>
-                            <li>2GB RAM</li>
-                            <li>Stable internet connection</li>
-                            <li>Any device made after 2015</li>
+                            <li data-i18n="minReq1">Any modern web browser (Chrome, Firefox, Safari, Edge)</li>
+                            <li data-i18n="minReq2">2GB RAM</li>
+                            <li data-i18n="minReq3">Stable internet connection</li>
+                            <li data-i18n="minReq4">Any device made after 2015</li>
                         </ul>
                     </div>
                     <div>
-                        <h3 class="text-xl font-semibold mb-2">Recommended</h3>
+                        <h3 class="text-xl font-semibold mb-2" data-i18n="recReqTitle">Recommended</h3>
                         <ul class="space-y-2 pl-5 list-disc">
-                            <li>Chrome or Firefox (latest version)</li>
-                            <li>4GB RAM or higher</li>
-                            <li>High-speed internet connection</li>
-                            <li>Desktop or high-end mobile device</li>
+                            <li data-i18n="recReq1">Chrome or Firefox (latest version)</li>
+                            <li data-i18n="recReq2">4GB RAM or higher</li>
+                            <li data-i18n="recReq3">High-speed internet connection</li>
+                            <li data-i18n="recReq4">Desktop or high-end mobile device</li>
                         </ul>
                     </div>
                 </div>
@@ -272,24 +324,296 @@
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <a href="https://yuteng.online" class="text-2xl font-bold">Yuteng</a>
-                    <p class="mt-2 text-gray-400">The ultimate monster survival experience</p>
+                    <a href="https://yuteng.online" class="text-2xl font-bold" data-i18n="siteTitle">Yuteng</a>
+                    <p class="mt-2 text-gray-400" data-i18n="footerTagline">The ultimate monster survival experience</p>
                 </div>
                 <div class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
-                    <a href="#" class="hover:text-apple-blue transition duration-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-apple-blue transition duration-300">Terms of Service</a>
-                    <a href="#" class="hover:text-apple-blue transition duration-300">Contact</a>
+                    <a href="#" class="hover:text-apple-blue transition duration-300" data-i18n="footerPrivacy">Privacy Policy</a>
+                    <a href="#" class="hover:text-apple-blue transition duration-300" data-i18n="footerTerms">Terms of Service</a>
+                    <a href="#" class="hover:text-apple-blue transition duration-300" data-i18n="footerContact">Contact</a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-                <p>&copy; 2025 Yuteng Online. All rights reserved.</p>
+                <p data-i18n="footerCopyright">&copy; 2025 Yuteng Online. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Simple mobile menu toggle
+        // 语言切换功能
+        class LanguageSwitcher {
+            constructor() {
+                this.currentLang = 'en';
+                this.translations = {};
+                this.init();
+            }
+
+            async init() {
+                // 1. 获取用户语言偏好
+                this.currentLang = this.getUserLanguage();
+                
+                // 2. 设置下拉框
+                const select = document.getElementById('languageSelect');
+                if (select) {
+                    select.value = this.currentLang;
+                    select.addEventListener('change', (e) => this.changeLanguage(e.target.value));
+                }
+                
+                // 3. 加载并应用翻译
+                await this.loadTranslations();
+                this.applyTranslations();
+                
+                // 4. 保存选择
+                this.saveLanguagePreference();
+            }
+
+            // 获取用户语言（浏览器语言 + 本地存储）
+            getUserLanguage() {
+                // 检查本地存储中是否有保存的语言
+                const savedLang = localStorage.getItem('preferredLanguage');
+                if (savedLang) return savedLang;
+                
+                // 根据浏览器语言猜测
+                const browserLang = navigator.language || navigator.userLanguage;
+                if (browserLang.startsWith('zh')) {
+                    return browserLang.includes('TW') || browserLang.includes('HK') ? 'zh-TW' : 'zh-CN';
+                } else if (browserLang.startsWith('ja')) {
+                    return 'ja';
+                }
+                return 'en'; // 默认英语
+            }
+
+            // 加载语言文件
+            async loadTranslations() {
+                // 内联语言数据
+                const languageData = {
+                    'en': {
+                        "siteTitle": "Yuteng",
+                        "navPlay": "Play Now",
+                        "navAbout": "About",
+                        "navFeatures": "Features",
+                        "navHowToPlay": "How to Play",
+                        "mainTitle": "Yuteng Monster Survivors",
+                        "mainTagline": "Survive endless waves of monsters in this thrilling action-packed adventure",
+                        "aboutTitle": "About Yuteng Monster Survivors",
+                        "aboutText1": "Yuteng Monster Survivors is an immersive online gaming experience that puts your survival skills to the test. In this action-packed adventure, you'll face endless waves of monsters in a constantly evolving world. With each wave becoming progressively challenging, you'll need to collect power-ups, upgrade your character, and employ strategic gameplay to survive as long as possible.",
+                        "aboutText2": "Developed using cutting-edge Unity technology, Yuteng Monster Survivors offers smooth gameplay, stunning visuals, and an engaging progression system that will keep you coming back for more. The game features a variety of unique characters, each with special abilities and playstyles to master.",
+                        "featuresTitle": "Game Features",
+                        "feature1Title": "Endless Gameplay",
+                        "feature1Desc": "Face increasingly difficult waves of monsters with no end in sight. How long can you survive?",
+                        "feature2Title": "Character Progression",
+                        "feature2Desc": "Level up your character, unlock new abilities, and upgrade your stats as you play.",
+                        "feature3Title": "Dynamic Power-ups",
+                        "feature3Desc": "Collect various power-ups that dramatically change your gameplay strategy and abilities.",
+                        "feature4Title": "Unique Enemies",
+                        "feature4Desc": "Battle dozens of different monster types, each with unique behaviors and attack patterns.",
+                        "feature5Title": "Stunning Visuals",
+                        "feature5Desc": "Enjoy beautifully designed environments and character models with smooth animations.",
+                        "feature6Title": "Cross-platform",
+                        "feature6Desc": "Play seamlessly across desktop and mobile devices with optimized controls for each platform.",
+                        "howToPlayTitle": "How to Play",
+                        "howToPlayIntro": "Getting started with Yuteng Monster Survivors is simple:",
+                        "controlsTitle": "Controls",
+                        "controlsDesc": "Use WASD or arrow keys to move your character (on desktop). On mobile, use the virtual joystick that appears on the screen.",
+                        "combatTitle": "Combat",
+                        "combatDesc": "Your character attacks automatically. Position yourself strategically to maximize damage while avoiding enemy attacks.",
+                        "levelUpTitle": "Level Up",
+                        "levelUpDesc": "Collect experience gems dropped by defeated enemies to level up. Each level, you'll get to choose between three random upgrades.",
+                        "powerupsTitle": "Power-ups",
+                        "powerupsDesc": "Special items occasionally appear on the battlefield. Collect them for temporary or permanent boosts.",
+                        "surviveTitle": "Survive",
+                        "surviveDesc": "The goal is to survive as long as possible while defeating as many monsters as you can. Your score increases with each enemy defeated.",
+                        "systemReqTitle": "System Requirements",
+                        "minReqTitle": "Minimum Requirements",
+                        "minReq1": "Any modern web browser (Chrome, Firefox, Safari, Edge)",
+                        "minReq2": "2GB RAM",
+                        "minReq3": "Stable internet connection",
+                        "minReq4": "Any device made after 2015",
+                        "recReqTitle": "Recommended",
+                        "recReq1": "Chrome or Firefox (latest version)",
+                        "recReq2": "4GB RAM or higher",
+                        "recReq3": "High-speed internet connection",
+                        "recReq4": "Desktop or high-end mobile device",
+                        "footerTagline": "The ultimate monster survival experience",
+                        "footerPrivacy": "Privacy Policy",
+                        "footerTerms": "Terms of Service",
+                        "footerContact": "Contact",
+                        "footerCopyright": "© 2025 Yuteng Online. All rights reserved."
+                    },
+                    'zh-CN': {
+                        "siteTitle": "雨腾",
+                        "navPlay": "开始游戏",
+                        "navAbout": "关于",
+                        "navFeatures": "游戏特色",
+                        "navHowToPlay": "如何游戏",
+                        "mainTitle": "雨腾怪物幸存者",
+                        "mainTagline": "在这款惊心动魄的动作冒险中，在无尽的怪物浪潮中生存",
+                        "aboutTitle": "关于雨腾怪物幸存者",
+                        "aboutText1": "雨腾怪物幸存者是一款沉浸式在线游戏体验，考验您的生存技能。在这个充满动作的冒险中，您将在一个不断演变的世界中面对无尽的怪物浪潮。随着每一波怪物变得越来越具有挑战性，您需要收集能量提升、升级角色并采用战略游戏玩法，尽可能长时间地生存下去。",
+                        "aboutText2": "雨腾怪物幸存者采用尖端Unity技术开发，提供流畅的游戏玩法、令人惊叹的视觉效果和引人入胜的进度系统，让您流连忘返。游戏拥有各种独特角色，每个角色都有特殊能力和玩法风格供您掌握。",
+                        "featuresTitle": "游戏特色",
+                        "feature1Title": "无尽游戏",
+                        "feature1Desc": "面对越来越难的怪物浪潮，永无止境。你能生存多久？",
+                        "feature2Title": "角色成长",
+                        "feature2Desc": "升级你的角色，解锁新能力，并在游戏中提升属性。",
+                        "feature3Title": "动态能量提升",
+                        "feature3Desc": "收集各种能量提升，显著改变您的游戏策略和能力。",
+                        "feature4Title": "独特敌人",
+                        "feature4Desc": "与数十种不同类型的怪物战斗，每种都有独特的行为和攻击模式。",
+                        "feature5Title": "惊人视觉效果",
+                        "feature5Desc": "享受精美设计的环境和角色模型，以及流畅的动画效果。",
+                        "feature6Title": "跨平台支持",
+                        "feature6Desc": "在桌面和移动设备上无缝游戏，每种平台都有优化的控制方式。",
+                        "howToPlayTitle": "如何游戏",
+                        "howToPlayIntro": "开始玩雨腾怪物幸存者很简单：",
+                        "controlsTitle": "控制方式",
+                        "controlsDesc": "使用WASD或方向键移动角色（桌面端）。在移动设备上，使用屏幕上的虚拟摇杆。",
+                        "combatTitle": "战斗",
+                        "combatDesc": "您的角色会自动攻击。战略性地定位自己，以最大化伤害同时避免敌人攻击。",
+                        "levelUpTitle": "升级",
+                        "levelUpDesc": "收集被击败敌人掉落的经验宝石来升级。每个级别，您都可以在三个随机升级中选择一个。",
+                        "powerupsTitle": "能量提升",
+                        "powerupsDesc": "特殊物品偶尔会出现在战场上。收集它们以获得临时或永久提升。",
+                        "surviveTitle": "生存",
+                        "surviveDesc": "目标是在击败尽可能多的怪物的同时尽可能长时间地生存。您的分数会随着每个被击败的敌人而增加。",
+                        "systemReqTitle": "系统要求",
+                        "minReqTitle": "最低要求",
+                        "minReq1": "任何现代网页浏览器（Chrome、Firefox、Safari、Edge）",
+                        "minReq2": "2GB RAM",
+                        "minReq3": "稳定的网络连接",
+                        "minReq4": "2015年后的任何设备",
+                        "recReqTitle": "推荐配置",
+                        "recReq1": "Chrome或Firefox（最新版本）",
+                        "recReq2": "4GB RAM或更高",
+                        "recReq3": "高速网络连接",
+                        "recReq4": "桌面或高端移动设备",
+                        "footerTagline": "终极怪物生存体验",
+                        "footerPrivacy": "隐私政策",
+                        "footerTerms": "服务条款",
+                        "footerContact": "联系我们",
+                        "footerCopyright": "© 2025 雨腾在线。保留所有权利。"
+                    },
+                    'ja': {
+                        "siteTitle": "Yuteng",
+                        "navPlay": "今すぐプレイ",
+                        "navAbout": "概要",
+                        "navFeatures": "特徴",
+                        "navHowToPlay": "遊び方",
+                        "mainTitle": "Yuteng モンスターサバイバーズ",
+                        "mainTagline": "スリリングでアクション満載の冒険で、果てしないモンスターの波を生き延びろ",
+                        "aboutTitle": "Yuteng モンスターサバイバーズについて",
+                        "aboutText1": "Yuteng モンスターサバイバーズは、あなたのサバイバルスキルを試す没入型オンラインゲーム体験です。このアクション満載の冒険では、常に進化する世界で果てしないモンスターの波に立ち向かいます。波が進むごとに難易度が上がるため、パワーアップを集め、キャラクターをアップグレードし、戦略的なゲームプレイを駆使して、できるだけ長く生き延びる必要があります。",
+                        "aboutText2": "最先端のUnityテクノロジーを使用して開発されたYuteng モンスターサバイバーズは、スムーズなゲームプレイ、見事なビジュアル、そしてあなたが何度も戻ってくる魅力的な進歩システムを提供します。ゲームにはさまざまなユニークなキャラクターが登場し、それぞれ習得する特別な能力とプレイスタイルがあります。",
+                        "featuresTitle": "ゲームの特徴",
+                        "feature1Title": "エンドレスゲームプレイ",
+                        "feature1Desc": "終わりの見えない、ますます困難になるモンスターの波に立ち向かおう。どれだけ長く生き延びられるか？",
+                        "feature2Title": "キャラクターの成長",
+                        "feature2Desc": "キャラクターをレベルアップし、新しい能力をアンロックし、プレイしながらステータスをアップグレードします。",
+                        "feature3Title": "ダイナミックなパワーアップ",
+                        "feature3Desc": "ゲームプレイの戦略と能力を劇的に変えるさまざまなパワーアップを集めます。",
+                        "feature4Title": "ユニークな敵",
+                        "feature4Desc": "それぞれ独自の行動パターンと攻撃パターンを持つ数十種類の異なるモンスタータイプと戦います。",
+                        "feature5Title": "素晴らしいビジュアル",
+                        "feature5Desc": "美しくデザインされた環境とキャラクターモデル、スムーズなアニメーションをお楽しみください。",
+                        "feature6Title": "クロスプラットフォーム",
+                        "feature6Desc": "デスクトップとモバイルデバイス間でシームレスにプレイし、各プラットフォームに最適化されたコントロールを利用できます。",
+                        "howToPlayTitle": "遊び方",
+                        "howToPlayIntro": "Yuteng モンスターサバイバーズを始めるのは簡単です：",
+                        "controlsTitle": "操作方法",
+                        "controlsDesc": "WASDまたは矢印キーを使用してキャラクターを移動します（デスクトップの場合）。モバイルでは、画面に表示されるバーチャルジョイスティックを使用します。",
+                        "combatTitle": "戦闘",
+                        "combatDesc": "キャラクターは自動的に攻撃します。敵の攻撃を避けながらダメージを最大化するために、戦略的に位置を決めます。",
+                        "levelUpTitle": "レベルアップ",
+                        "levelUpDesc": "倒された敵が落とす経験ジェムを集めてレベルアップします。各レベルで、3つのランダムなアップグレードから選択できます。",
+                        "powerupsTitle": "パワーアップ",
+                        "powerupsDesc": "特別なアイテムが戦場に時折現れます。それらを集めて一時的または永続的なブーストを得ましょう。",
+                        "surviveTitle": "生存",
+                        "surviveDesc": "目標は、できるだけ多くのモンスターを倒しながら、できるだけ長く生き延びることです。敵を倒すごとにスコアが増加します。",
+                        "systemReqTitle": "システム要件",
+                        "minReqTitle": "最低要件",
+                        "minReq1": "最新のウェブブラウザ（Chrome、Firefox、Safari、Edge）",
+                        "minReq2": "2GB RAM",
+                        "minReq3": "安定したインターネット接続",
+                        "minReq4": "2015年以降に製造されたデバイス",
+                        "recReqTitle": "推奨",
+                        "recReq1": "ChromeまたはFirefox（最新版）",
+                        "recReq2": "4GB RAM以上",
+                        "recReq3": "高速インターネット接続",
+                        "recReq4": "デスクトップまたはハイエンドモバイルデバイス",
+                        "footerTagline": "究極のモンスターサバイバル体験",
+                        "footerPrivacy": "プライバシーポリシー",
+                        "footerTerms": "利用規約",
+                        "footerContact": "お問い合わせ",
+                        "footerCopyright": "© 2025 Yuteng オンライン。全著作権所有。"
+                    }
+                };
+                
+                try {
+                    // 如果语言数据中存在当前语言，使用它
+                    if (languageData[this.currentLang]) {
+                        this.translations = languageData[this.currentLang];
+                    } else {
+                        // 否则使用英语作为回退
+                        console.warn(`无法加载 ${this.currentLang} 翻译，使用英语回退`);
+                        this.translations = languageData['en'];
+                        this.currentLang = 'en';
+                    }
+                } catch (error) {
+                    console.error('加载翻译时出错:', error);
+                    this.translations = languageData['en'];
+                    this.currentLang = 'en';
+                }
+            }
+
+            // 应用翻译到页面
+            applyTranslations() {
+                // 翻译所有带 data-i18n 的元素
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (this.translations[key]) {
+                        // 检查元素是否是输入框或文本区域
+                        if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                            element.placeholder = this.translations[key];
+                        } else {
+                            element.textContent = this.translations[key];
+                        }
+                    }
+                });
+            }
+
+            // 切换语言
+            async changeLanguage(lang) {
+                this.currentLang = lang;
+                await this.loadTranslations();
+                this.applyTranslations();
+                this.saveLanguagePreference();
+                
+                // 更新URL（可选，用于分享链接）
+                const url = new URL(window.location);
+                url.searchParams.set('lang', lang);
+                window.history.replaceState({}, '', url);
+                
+                // 更新语言选择器
+                const select = document.getElementById('languageSelect');
+                if (select) {
+                    select.value = lang;
+                }
+            }
+
+            // 保存语言偏好
+            saveLanguagePreference() {
+                localStorage.setItem('preferredLanguage', this.currentLang);
+                // 设置Cookie（用于服务器端检测，可选）
+                document.cookie = `lang=${this.currentLang};path=/;max-age=31536000`;
+            }
+        }
+
+        // 页面加载后初始化
         document.addEventListener('DOMContentLoaded', function() {
+            // 初始化语言切换器
+            window.languageSwitcher = new LanguageSwitcher();
+            
+            // Simple mobile menu toggle
             const menuButton = document.querySelector('header button');
             const nav = document.querySelector('header nav');
             
